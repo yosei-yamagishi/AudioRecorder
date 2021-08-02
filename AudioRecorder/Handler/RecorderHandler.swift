@@ -10,14 +10,10 @@ import AVFoundation
 
 class RecorderHandler {
     static let settings: [String: Any] = [
-        // MPEG-4 AACコーデックを指定するキー
-        AVFormatIDKey: kAudioFormatMPEG4AAC,
-        // サンプルレート変換品質
-        AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
-        // モノラル
-        AVNumberOfChannelsKey: 1,
-        // サンプルレート
-        AVSampleRateKey: 44100
+        AVFormatIDKey: kAudioFormatMPEG4AAC, // コーデックを指定
+        AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue, // 品質
+        AVNumberOfChannelsKey: 1, // モノラル
+        AVSampleRateKey: 44100 // サンプルレート
     ]
     
     private var recorder: AVAudioRecorder?
