@@ -44,5 +44,4 @@ class RecorderHandler {
         let amp = pow(10, decibel / 20)
         return max(0, min(amp, 1)) // 0...1の間の値
     }
-
 }
