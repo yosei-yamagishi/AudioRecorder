@@ -10,11 +10,11 @@ import AVFoundation
 
 class RecorderManager {
     var amplitudes: [Float] = []
-    let recordFileName: String = "originalAudio.m4a"
     var originalFileUrl: URL?
-    var recorderHandler = RecorderHandler()
-    var fileHandler = RecorderFileHandler()
-    var sessionHandler = RecorderSessionHandler()
+    private let recordFileName: String = "originalAudio.m4a"
+    private var recorderHandler = RecorderHandler()
+    private var fileHandler = RecorderFileHandler()
+    private var sessionHandler = RecorderSessionHandler()
     
     var isRecording: Bool { recorderHandler.isRecording }
     var currentTime: (minute: String, second: String, millisecond: String) {
@@ -33,8 +33,10 @@ class RecorderManager {
     
     func setup() {
         // マイクの許可を取る
-        sessionHandler.requestPermission { granted in
-            guard granted else { return }
+        sessionHandler.requestPermission { [weak self] granted in
+            guard let self = self, granted else { return }
+            // セッションをアクティブ
+            self.sessionHandler.setActive()
             // 音声ファイルを用意する
             let fileUrl = self.fileHandler.fileUrl(fileName: self.recordFileName)!
             self.originalFileUrl = fileUrl
@@ -45,16 +47,15 @@ class RecorderManager {
     }
     
     func record() {
-        // セッションをアクティブ
-        sessionHandler.setActive()
         // 収録を開始
         recorderHandler.record()
     }
 
     // 音声波形の更新
-    func updateAmpliude() {
+    func updateAmpliude() -> Float {
         let amplitude = recorderHandler.amplitude()
         amplitudes.append(amplitude)
+        return amplitude
     }
     
     func pause() {
