@@ -15,7 +15,7 @@ struct AudioLevelsView: View {
             ForEach(amplitudeLevels, id: \.self) { level in
                 AudioLevelBarView(barHeightRate: level)
             }
-        }.frame(height: 60)
+        }.frame(height: AudioLevelBarView.maxHeight)
     }
 }
 

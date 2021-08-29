@@ -25,8 +25,8 @@ class RecorderManager {
             (time - Float(minute * 60) - Float(second)) * 100.0
         )
         return (
-            minute: String(format: "%02d:", minute),
-            second: String(format: "%02d.", second),
+            minute: String(format: "%02d", minute),
+            second: String(format: "%02d", second),
             millisecond: String(format: "%02d", millisecond)
         )
     }

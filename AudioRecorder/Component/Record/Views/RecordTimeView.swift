@@ -11,14 +11,18 @@ struct RecordTimeView: View {
     var timeString: (minute: String, second: String, millisecond: String)
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             Group {
                 Text(timeString.minute)
+                    .frame(width: 66, alignment: .center)
+                    .font(.custom("Verdana-Bold", size: 42))
+                Text(":")
+                    .font(.custom("Verdana-Bold", size: 42))
                 Text(timeString.second)
-                Text(timeString.millisecond)
+                    .frame(width: 66, alignment: .center)
+                    .font(.custom("Verdana-Bold", size: 42))
             }
-            .foregroundColor(.white)
-            .font(.title)
+            .foregroundColor(Color.Theme.textColor)
         }
     }
 }
@@ -26,10 +30,10 @@ struct RecordTimeView: View {
 struct RecordTimeView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.background
+            Color.Theme.black
                 .edgesIgnoringSafeArea(.all)
             RecordTimeView(
-                timeString: (minute: "00", second: "00.", millisecond: "00")
+                timeString: (minute: "00", second: "00", millisecond: "00")
             )
         }
     }

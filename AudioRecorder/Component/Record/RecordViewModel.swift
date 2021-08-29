@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import Combine
 
 class RecordViewModel: ObservableObject {
     let recorderManager = RecorderManager()
     let playerManager = PlayerManager()
     
-    @Published var currentTimeString: (minute: String, second: String, millisecond: String) = ("00:", "00.", "00")
+    @Published var currentTimeString: (minute: String, second: String, millisecond: String) = ("00", "00", "00")
     @Published var isEnablePlay: Bool = false
-    @Published var isRecording: Bool = false
+    @Published var recordStatus: RecordStatus = .ready
     
     // 表示する音量の数
     static let amplitudeDisplayCount: Int = 10
     // 表示に使用する音量
     @Published var amplitudeLevels: [Float]
     private var amplitudeCount: Int = 0
-    private var timer: Timer?
+    private var timerCancellable: AnyCancellable?
     
     init() {
         amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
@@ -31,40 +32,53 @@ class RecordViewModel: ObservableObject {
     }
     
     func recordAndPause() {
-        if isRecording {
-            isRecording = false
+        switch recordStatus {
+        case .recording:
+            recordStatus = .pause
             recorderManager.pause()
             stopTimer()
-        } else {
-            isRecording = true
+        case .pause, .ready:
+            recordStatus = .recording
             recorderManager.record()
             startTimer()
+        case .stop:
+            return
         }
     }
     
     func stop() {
-        isEnablePlay = true
-        isRecording = false
-        stopTimer()
-        recorderManager.stop()
-        initAmplitudeLevels()
+        switch recordStatus {
+        case .recording, .pause:
+            recordStatus = .stop
+            isEnablePlay = true
+            stopTimer()
+            recorderManager.stop()
+            initAmplitudeLevels()
+        default:
+            break
+        }
     }
     
     func play() {
-        if let originalUrl = recorderManager.originalFileUrl {
-            playerManager.setup(originalUrl: originalUrl)
+        switch recordStatus {
+        case .stop:
+            if let originalUrl = recorderManager.originalFileUrl {
+                playerManager.setup(originalUrl: originalUrl)
+            }
+            playerManager.play(currentTime: 0)
+        default:
+            break
         }
-        playerManager.play(currentTime: 0)
     }
     
     private func startTimer() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            self.updateAmpliude()
-            self.currentTimeString = self.recorderManager.currentTime
-        }
-        self.timer = timer
-        RunLoop.current.add(timer, forMode: .common)
+        timerCancellable = Timer.publish(every: 0.01, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] timer in
+                guard let self = self else { return }
+                self.updateAmpliude()
+                self.currentTimeString = self.recorderManager.currentTime
+            }
     }
     
     private func updateAmpliude() {
@@ -75,8 +89,7 @@ class RecordViewModel: ObservableObject {
     }
     
     private func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+        timerCancellable?.cancel()
     }
     
     private func initAmplitudeLevels() {
