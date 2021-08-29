@@ -13,43 +13,56 @@ struct RecordControlView: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 36) {
-            Button(action: {
-                viewModel.play()
-            }){
-                Image(systemName: "play.circle")
-                    .resizable()
-                    .scaledToFit()
+            playbackButton()
+            recordAndPauseButton()
+            stopButton()
+        }
+    }
+    
+    private func playbackButton() -> some View {
+        Button(action: {
+            viewModel.play()
+        }){
+            switch viewModel.recordStatus {
+            case .recording, .ready, .pause:
+                PlaybackButtonView()
+                    .foregroundColor(Color.Theme.disable)
+                    .disabled(false)
+            case .stop:
+                PlaybackButtonView()
+                    .foregroundColor(.white)
+                    .disabled(true)
+            }
+        }
+    }
+    
+    private func recordAndPauseButton() -> some View {
+        Button(action: {
+            viewModel.recordAndPause()
+        }){
+            switch viewModel.recordStatus {
+            case .recording:
+                RecordPauseButtonView()
                     .frame(width: 40, height: 40)
-                    .foregroundColor(viewModel.isEnablePlay ? .white : Color.gray)
+            default:
+                RecordButtomView()
+                    .frame(width: 40, height: 40)
             }
-            .disabled(!viewModel.isEnablePlay)
-            
-            Button(action: {
-                viewModel.recordAndPause()
-            }){
-                ZStack {
-                    switch viewModel.recordStatus {
-                    case .recording:
-                        RecordPauseButtonView()
-                    default:
-                        RecordButtomView()
-                    }
-                }
-                .frame(width: 40, height: 40)
-            }
-            
-            Button(action: {
-                viewModel.stop()
-            }){
-                switch self.viewModel.recordStatus {
-                case .ready, .stop:
-                    RecordStopButtonView()
-                        .disabled(true)
-                default:
-                    RecordStopButtonView()
-                        .foregroundColor(Color.Theme.pink)
-                        .disabled(false)
-                }
+        }
+    }
+    
+    private func stopButton() -> some View {
+        Button(action: {
+            viewModel.stop()
+        }){
+            switch self.viewModel.recordStatus {
+            case .ready, .stop:
+                RecordStopButtonView()
+                    .disabled(true)
+            default:
+                RecordStopButtonView()
+                    .foregroundColor(Color.Theme.pink)
+                    .disabled(false)
             }
         }
     }
@@ -97,6 +110,18 @@ struct RecordButtomView: View {
 struct RecordStopButtonView: View {
     var body: some View {
         Image(systemName: "stop.circle")
+            .renderingMode(.template)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 40, height: 40)
+    }
+}
+
+// 収録停止ボタン
+struct PlaybackButtonView: View {
+    var body: some View {
+        Image(systemName: "play.circle")
+            .renderingMode(.template)
             .resizable()
             .scaledToFit()
             .frame(width: 40, height: 40)

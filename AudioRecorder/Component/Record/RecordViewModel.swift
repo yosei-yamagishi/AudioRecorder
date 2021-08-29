@@ -47,18 +47,28 @@ class RecordViewModel: ObservableObject {
     }
     
     func stop() {
-        recordStatus = .stop
-        isEnablePlay = true
-        stopTimer()
-        recorderManager.stop()
-        initAmplitudeLevels()
+        switch recordStatus {
+        case .recording, .pause:
+            recordStatus = .stop
+            isEnablePlay = true
+            stopTimer()
+            recorderManager.stop()
+            initAmplitudeLevels()
+        default:
+            break
+        }
     }
     
     func play() {
-        if let originalUrl = recorderManager.originalFileUrl {
-            playerManager.setup(originalUrl: originalUrl)
+        switch recordStatus {
+        case .stop:
+            if let originalUrl = recorderManager.originalFileUrl {
+                playerManager.setup(originalUrl: originalUrl)
+            }
+            playerManager.play(currentTime: 0)
+        default:
+            break
         }
-        playerManager.play(currentTime: 0)
     }
     
     private func startTimer() {

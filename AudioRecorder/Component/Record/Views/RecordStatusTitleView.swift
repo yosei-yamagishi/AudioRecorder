@@ -43,7 +43,6 @@ struct RecordStatusTitleView: View {
                         let index = timeCounter % status.title.count
                         self.animateText(index: index, text: status.title)
                         self.timeCounter += 1
-                        print("###うごいてる")
                     }
             default:
                 for (index, _) in titleTextAnimations.enumerated() {
