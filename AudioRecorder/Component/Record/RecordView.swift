@@ -12,12 +12,19 @@ struct RecordView: View {
     
     var body: some View {
         ZStack {
-            Color.background
-                .edgesIgnoringSafeArea(.all)
+            Color.Theme.black
+                .ignoresSafeArea()
             VStack {
                 Spacer()
-                RecordTimeView(timeString: viewModel.currentTimeString)
-                AudioLevelsView(amplitudeLevels: viewModel.amplitudeLevels)
+                    .frame(height: 20)
+                RecordStatusTitleView(recordStatus: $viewModel.recordStatus)
+                Spacer()
+                VStack(spacing: 0) {
+                    RecordTimeView(timeString: viewModel.currentTimeString)
+                    AudioLevelsView(amplitudeLevels: viewModel.amplitudeLevels)
+                    
+                }
+                
                 Spacer()
                 RecordControlView(viewModel: viewModel)
                 Spacer()

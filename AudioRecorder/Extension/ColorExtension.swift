@@ -8,12 +8,12 @@
 import SwiftUI
 
 extension Color {
-    // カラーパレット
-    // https://colorhunt.co/palette/7c83fd96baff7dedff88fff7
-    static let primary = Color("PrimaryColor")
-    static let secondaly = Color("SecondalyColor")
-    static let tertiary = Color("TertiaryColor")
-    static let background = Color("BackgroundColor")
-    static let textColor = Color.white
-    static let disable = Color.gray
+    struct Theme {
+        static let yellow = Color("YellowThemeColor")
+        static let pink = Color("PinkThemeColor")
+        static let purple = Color("PurpleThemeColor")
+        static let black = Color("BlackThemeColor")
+        static let textColor = Color("TextColor")
+        static let disable = Color.gray
+    }
 }

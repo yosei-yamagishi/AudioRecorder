@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AudioLevelBarView: View {
-    let miniHeight: CGFloat = 10
-    let maxHeight: CGFloat = 50
+    static let miniHeight: CGFloat = 10
+    static let maxHeight: CGFloat = 44
     let barHeightRate: Float
-    let gradationColors: [Color] = [Color.primary, Color.secondaly]
-    let silenceGradationColors: [Color] = [Color.disable]
+    let gradationColors: [Color] = [Color.Theme.yellow, Color.Theme.pink]
+    let silenceGradationColors: [Color] = [Color.Theme.disable]
     var isSilence: Bool {
         barHeightRate == 0
     }
@@ -26,7 +26,7 @@ struct AudioLevelBarView: View {
                     endPoint: .bottom
                 )
             )
-            .frame(width: 4, height: maxHeight * CGFloat(barHeightRate) + miniHeight)
+            .frame(width: 4, height: Self.maxHeight * CGFloat(barHeightRate) + Self.miniHeight)
     }
 }
 
