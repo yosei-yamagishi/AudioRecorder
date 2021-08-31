@@ -15,13 +15,11 @@ struct RecordTimeView: View {
             Group {
                 Text(timeString.minute)
                     .frame(width: 66, alignment: .center)
-                    .font(.custom("Verdana-Bold", size: 42))
                 Text(":")
-                    .font(.custom("Verdana-Bold", size: 42))
                 Text(timeString.second)
                     .frame(width: 66, alignment: .center)
-                    .font(.custom("Verdana-Bold", size: 42))
             }
+            .font(.custom("Verdana-Bold", size: 42))
             .foregroundColor(Color.Theme.textColor)
         }
     }
