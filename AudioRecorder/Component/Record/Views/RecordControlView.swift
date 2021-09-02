@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+protocol RecordControlViewProtocol: ObservableObject {
+    var recordStatus: RecordStatus { get }
+    func play()
+    func recordAndPause()
+    func stop()
+}
+
 // 収録操作するView
-struct RecordControlView: View {
-    @ObservedObject var viewModel: RecordViewModel
+struct RecordControlView<ViewModel: RecordControlViewProtocol>: View  {
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 36) {

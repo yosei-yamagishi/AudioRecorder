@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class RecordViewModel: ObservableObject {
+class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsViewProtocol, RecordStatusTitleViewProtocol {
     let recorderManager = RecorderManager()
     let playerManager = PlayerManager()
     
@@ -31,6 +31,37 @@ class RecordViewModel: ObservableObject {
         recorderManager.setup()
     }
     
+    private func updateAmpliude() {
+        let amplitude = self.recorderManager.updateAmpliude()
+        self.amplitudeCount += 1
+        let index = self.amplitudeCount % Self.amplitudeDisplayCount
+        self.amplitudeLevels[index] = amplitude
+    }
+
+    private func initAmplitudeLevels() {
+        amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
+    }
+}
+
+// MARK: Timer
+
+extension RecordViewModel {
+    private func startTimer() {
+        timerCancellable = Timer.publish(every: 0.01, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] timer in
+                guard let self = self else { return }
+                self.updateAmpliude()
+                self.currentTimeString = self.recorderManager.currentTime
+            }
+    }
+    
+    private func stopTimer() {
+        timerCancellable?.cancel()
+    }
+}
+
+extension RecordViewModel: RecordControlViewProtocol {
     func recordAndPause() {
         switch recordStatus {
         case .recording:
@@ -69,30 +100,5 @@ class RecordViewModel: ObservableObject {
         default:
             break
         }
-    }
-    
-    private func startTimer() {
-        timerCancellable = Timer.publish(every: 0.01, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] timer in
-                guard let self = self else { return }
-                self.updateAmpliude()
-                self.currentTimeString = self.recorderManager.currentTime
-            }
-    }
-    
-    private func updateAmpliude() {
-        let amplitude = self.recorderManager.updateAmpliude()
-        self.amplitudeCount += 1
-        let index = self.amplitudeCount % Self.amplitudeDisplayCount
-        self.amplitudeLevels[index] = amplitude
-    }
-    
-    private func stopTimer() {
-        timerCancellable?.cancel()
-    }
-    
-    private func initAmplitudeLevels() {
-        amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
     }
 }

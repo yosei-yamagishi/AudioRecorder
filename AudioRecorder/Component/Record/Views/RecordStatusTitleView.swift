@@ -8,17 +8,20 @@
 import SwiftUI
 import Combine
 
-struct RecordStatusTitleView: View {
-    @Binding var recordStatus: RecordStatus
+protocol RecordStatusTitleViewProtocol: ObservableObject {
+    var recordStatus: RecordStatus { get }
+}
+struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     @State var titleTextAnimations: [TextAnimationInfo] = []
     @State var timerCancellable: AnyCancellable?
     @State var timeCounter: Int = 0
     
     var body: some View {
         Group {
-            switch self.recordStatus {
+            switch viewModel.recordStatus {
             case .stop, .pause, .ready:
-                Text(recordStatus.title)
+                Text(viewModel.recordStatus.title)
             case .recording:
                 HStack(spacing: 0) {
                     ForEach(titleTextAnimations) { text in
@@ -31,7 +34,7 @@ struct RecordStatusTitleView: View {
         .frame(height: 40)
         .foregroundColor(Color.Theme.textColor)
         .font(.largeTitle.bold())
-        .onChange(of: recordStatus) { status in
+        .onChange(of: viewModel.recordStatus) { status in
             switch status {
             case .recording:
                 status.title.forEach {
@@ -70,7 +73,7 @@ struct RecordStatusTitleView: View {
     }
     
     private func setOffset(index: Int, offset: CGFloat) {
-        switch recordStatus {
+        switch viewModel.recordStatus {
         case .recording:
             titleTextAnimations[index].offset = offset
         default:
@@ -84,7 +87,7 @@ struct RecordStatusTitleView_Previews: PreviewProvider {
         ZStack {
             Color.Theme.black
                 .ignoresSafeArea()
-            RecordStatusTitleView(recordStatus: .constant(.ready))
+            RecordStatusTitleView(viewModel: RecordViewModel())
         }
     }
 }
