@@ -17,14 +17,12 @@ struct RecordView: View {
             VStack {
                 Spacer()
                     .frame(height: 20)
-                RecordStatusTitleView(recordStatus: $viewModel.recordStatus)
+                RecordStatusTitleView(viewModel: viewModel)
                 Spacer()
                 VStack(spacing: 0) {
-                    RecordTimeView(timeString: viewModel.currentTimeString)
-                    AudioLevelsView(amplitudeLevels: viewModel.amplitudeLevels)
-                    
+                    RecordTimeView(viewModel: viewModel)
+                    AudioLevelsView(viewModel: viewModel)
                 }
-                
                 Spacer()
                 RecordControlView(viewModel: viewModel)
                 Spacer()

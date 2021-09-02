@@ -7,16 +7,20 @@
 
 import SwiftUI
 
-struct RecordTimeView: View {
-    var timeString: (minute: String, second: String, millisecond: String)
+protocol RecordTimeViewProtocol: ObservableObject {
+    var currentTimeString: (minute: String, second: String, millisecond: String) { get set }
+}
+
+struct RecordTimeView<ViewModel: RecordTimeViewProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             Group {
-                Text(timeString.minute)
+                Text(viewModel.currentTimeString.minute)
                     .frame(width: 66, alignment: .center)
                 Text(":")
-                Text(timeString.second)
+                Text(viewModel.currentTimeString.second)
                     .frame(width: 66, alignment: .center)
             }
             .font(.custom("Verdana-Bold", size: 42))
@@ -31,7 +35,7 @@ struct RecordTimeView_Previews: PreviewProvider {
             Color.Theme.black
                 .edgesIgnoringSafeArea(.all)
             RecordTimeView(
-                timeString: (minute: "00", second: "00", millisecond: "00")
+                viewModel: RecordViewModel()
             )
         }
     }
