@@ -23,7 +23,7 @@ struct RecordTimeView<ViewModel: RecordTimeViewProtocol>: View {
                 Text(viewModel.currentTimeString.second)
                     .frame(width: 66, alignment: .center)
             }
-            .font(.custom("Verdana-Bold", size: 42))
+            .font(.custom(Font.CustomName.helveticaNeueUltraLight, size: 42))
             .foregroundColor(Color.Theme.textColor)
         }
     }

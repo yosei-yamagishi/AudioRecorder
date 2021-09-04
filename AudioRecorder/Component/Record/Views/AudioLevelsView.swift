@@ -8,16 +8,25 @@
 import SwiftUI
 
 protocol AudioLevelsViewProtocol: ObservableObject {
+    var recordStatus: RecordStatus { get }
     var amplitudeLevels: [Float] { get }
 }
 
 struct AudioLevelsView<ViewModel: AudioLevelsViewProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
+    var neonColor: Color {
+        switch viewModel.recordStatus {
+        case .ready, .stop: return Color.Theme.disable
+        case .pause: return Color.Theme.pink
+        case .recording: return Color.Theme.yellow
+        }
+    }
+    
     var body: some View {
         HStack(spacing: 4) {
             ForEach(viewModel.amplitudeLevels, id: \.self) { level in
-                AudioLevelBarView(component: AudioLevelBarView.Component(barHeightRate: level))
+                AudioLevelBarView(component: AudioLevelBarView.Component(neonColor: neonColor, barHeightRate: level))
             }
         }.frame(height: AudioLevelBarView.maxHeight)
     }

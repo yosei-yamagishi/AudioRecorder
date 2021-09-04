@@ -8,11 +8,13 @@
 import SwiftUI
 
 protocol AudioLevelBarViewProtocol {
+    var neonColor: Color { get }
     var barHeightRate: Float { get }
 }
 
 struct AudioLevelBarView: View {
     struct Component: AudioLevelBarViewProtocol {
+        let neonColor: Color
         let barHeightRate: Float
     }
     
@@ -24,7 +26,7 @@ struct AudioLevelBarView: View {
     let component: AudioLevelBarViewProtocol
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 2)
+        RoundedRectangle(cornerRadius: 0.5)
             .fill(
                 LinearGradient(
                     gradient: Gradient(colors: component.barHeightRate == 0 ? silenceGradationColors : gradationColors),
@@ -32,12 +34,13 @@ struct AudioLevelBarView: View {
                     endPoint: .bottom
                 )
             )
-            .frame(width: 4, height: Self.maxHeight * CGFloat(component.barHeightRate) + Self.miniHeight)
+            .frame(width: 1, height: Self.maxHeight * CGFloat(component.barHeightRate) + Self.miniHeight)
+            .neonStyle(neonColor: component.neonColor)
     }
 }
 
 struct AudioLevelBarView_Previews: PreviewProvider {
     static var previews: some View {
-        AudioLevelBarView(component: AudioLevelBarView.Component(barHeightRate: 0.5))
+        AudioLevelBarView(component: AudioLevelBarView.Component(neonColor: Color.Theme.pink, barHeightRate: 0.5))
     }
 }

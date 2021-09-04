@@ -16,10 +16,10 @@ struct RecordView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                    .frame(height: 20)
-                RecordStatusTitleView(viewModel: viewModel)
-                Spacer()
                 VStack(spacing: 0) {
+                    RecordStatusTitleView(viewModel: viewModel)
+                    Spacer()
+                        .frame(height: 20)
                     RecordTimeView(viewModel: viewModel)
                     AudioLevelsView(viewModel: viewModel)
                 }

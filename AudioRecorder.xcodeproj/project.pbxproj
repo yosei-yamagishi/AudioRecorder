@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0ADFF226E244A50024E890 /* NeonStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0ADFF126E244A50024E890 /* NeonStyleModifier.swift */; };
+		CA0ADFF426E244E30024E890 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0ADFF326E244E30024E890 /* ViewExtension.swift */; };
 		CA3E87EB26A99CEC002AEAF2 /* AudioRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3E87EA26A99CEC002AEAF2 /* AudioRecorderApp.swift */; };
 		CA3E87ED26A99CEC002AEAF2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3E87EC26A99CEC002AEAF2 /* RecordView.swift */; };
 		CA3E87EF26A99CED002AEAF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA3E87EE26A99CED002AEAF2 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA0ADFF126E244A50024E890 /* NeonStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonStyleModifier.swift; sourceTree = "<group>"; };
+		CA0ADFF326E244E30024E890 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		CA3E87E726A99CEC002AEAF2 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3E87EA26A99CEC002AEAF2 /* AudioRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderApp.swift; sourceTree = "<group>"; };
 		CA3E87EC26A99CEC002AEAF2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA0ADFEF26E244490024E890 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA0ADFF026E244540024E890 /* Modifier */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA0ADFF026E244540024E890 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				CA0ADFF126E244A50024E890 /* NeonStyleModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		CA3E87DE26A99CEC002AEAF2 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +229,7 @@
 		CA8E4B9F26BA1C1300C8ADC5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				CA0ADFEF26E244490024E890 /* View */,
 				CA3E882426A9AADF002AEAF2 /* Manager */,
 				CA3E882126A9AA5C002AEAF2 /* Handler */,
 				CA55AD4026D3DAA80000BF40 /* RecordStatus.swift */,
@@ -221,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */,
+				CA0ADFF326E244E30024E890 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -373,6 +395,7 @@
 			files = (
 				CA8E4B9E26BA18DA00C8ADC5 /* RecordTimeView.swift in Sources */,
 				CA8E4BA826BAC83B00C8ADC5 /* AudioLevelsView.swift in Sources */,
+				CA0ADFF226E244A50024E890 /* NeonStyleModifier.swift in Sources */,
 				CA3E87ED26A99CEC002AEAF2 /* RecordView.swift in Sources */,
 				CA3E882326A9AACC002AEAF2 /* RecorderManager.swift in Sources */,
 				CA8E4B9C26BA187F00C8ADC5 /* RecordControlView.swift in Sources */,
@@ -384,6 +407,7 @@
 				CA55AD4126D3DAA80000BF40 /* RecordStatus.swift in Sources */,
 				CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */,
 				CA3E882626A9B380002AEAF2 /* PlayerManager.swift in Sources */,
+				CA0ADFF426E244E30024E890 /* ViewExtension.swift in Sources */,
 				CA8E4BA126BA1C2800C8ADC5 /* ColorExtension.swift in Sources */,
 				CA3E87EB26A99CEC002AEAF2 /* AudioRecorderApp.swift in Sources */,
 				CA3E882026A9AA53002AEAF2 /* RecorderHandler.swift in Sources */,

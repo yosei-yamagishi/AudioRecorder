@@ -14,9 +14,9 @@ enum RecordStatus {
     var title: String {
         switch self {
         case .ready: return "Ready?"
-        case .recording: return "Recording..."
+        case .recording: return "Recording"
         case .pause: return "Pause"
-        case .stop: return "Stop!!"
+        case .stop: return "Stop"
         }
     }
 }
