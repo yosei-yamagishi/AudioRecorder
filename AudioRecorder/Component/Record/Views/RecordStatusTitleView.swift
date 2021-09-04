@@ -17,6 +17,14 @@ struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
     @State var timerCancellable: AnyCancellable?
     @State var timeCounter: Int = 0
     
+    var statusNeonColor: Color {
+        switch viewModel.recordStatus {
+        case .pause: return Color.Theme.pink
+        case .ready, .stop: return Color.Theme.white
+        case .recording: return Color.Theme.yellow
+        }
+    }
+    
     var body: some View {
         Group {
             switch viewModel.recordStatus {
@@ -32,8 +40,9 @@ struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
             }
         }
         .frame(height: 40)
-        .foregroundColor(Color.Theme.textColor)
-        .font(.largeTitle.bold())
+        .foregroundColor(statusNeonColor)
+        .neonStyle(neonColor: statusNeonColor)
+        .font(.custom(Font.CustomName.helveticaNeueUltraLight, size: 42))
         .onChange(of: viewModel.recordStatus) { status in
             switch status {
             case .recording:

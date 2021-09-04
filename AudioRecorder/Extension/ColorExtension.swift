@@ -14,6 +14,13 @@ extension Color {
         static let purple = Color("PurpleThemeColor")
         static let black = Color("BlackThemeColor")
         static let textColor = Color("TextColor")
+        static let white = Color.white
         static let disable = Color.gray
+    }
+}
+
+extension Font {
+    enum CustomName {
+        static let helveticaNeueUltraLight = "HelveticaNeue-UltraLight"
     }
 }
