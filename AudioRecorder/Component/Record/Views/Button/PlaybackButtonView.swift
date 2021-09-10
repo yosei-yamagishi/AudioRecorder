@@ -22,7 +22,7 @@ struct PlaybackButtonView: View {
                 Circle()
                     .stroke(component.buttonColor, lineWidth: 2)
                     .frame(width: 40, height: 40, alignment: .center)
-                Image(systemName: "play.fill")
+                Image.system(name: .playFill)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()

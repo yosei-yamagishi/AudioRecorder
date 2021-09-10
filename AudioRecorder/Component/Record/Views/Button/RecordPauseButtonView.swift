@@ -18,7 +18,7 @@ struct RecordPauseButtonView: View {
                 Circle()
                     .stroke(Color.Theme.pink, lineWidth: 2)
                     .frame(width: 60, height: 60, alignment: .center)
-                Image(systemName: "pause")
+                Image.system(name: .pause)
                     .renderingMode(.template)
                     .foregroundColor(Color.Theme.pink)
                     .font(.system(size: 24.0, weight: .bold, design: .default))

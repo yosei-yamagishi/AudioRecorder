@@ -31,6 +31,7 @@
 		CA6D6BD926EA3A65005B620B /* RecordStopButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */; };
 		CA6D6BDB26EA3A8A005B620B /* PlaybackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */; };
 		CA6D6BDD26EA3D7F005B620B /* RecordOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */; };
+		CA6D6BDF26EB8FAD005B620B /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BDE26EB8FAD005B620B /* ImageExtension.swift */; };
 		CA8E4B9926B9127E00C8ADC5 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9826B9127E00C8ADC5 /* RecordViewModel.swift */; };
 		CA8E4B9C26BA187F00C8ADC5 /* RecordControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9B26BA187F00C8ADC5 /* RecordControlView.swift */; };
 		CA8E4B9E26BA18DA00C8ADC5 /* RecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9D26BA18DA00C8ADC5 /* RecordTimeView.swift */; };
@@ -88,6 +89,7 @@
 		CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStopButtonView.swift; sourceTree = "<group>"; };
 		CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackButtonView.swift; sourceTree = "<group>"; };
 		CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOptionView.swift; sourceTree = "<group>"; };
+		CA6D6BDE26EB8FAD005B620B /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		CA8E4B9826B9127E00C8ADC5 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		CA8E4B9B26BA187F00C8ADC5 /* RecordControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordControlView.swift; sourceTree = "<group>"; };
 		CA8E4B9D26BA18DA00C8ADC5 /* RecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimeView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */,
 				CA0ADFF326E244E30024E890 /* ViewExtension.swift */,
+				CA6D6BDE26EB8FAD005B620B /* ImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				CA8E4B9E26BA18DA00C8ADC5 /* RecordTimeView.swift in Sources */,
 				CA8E4BA826BAC83B00C8ADC5 /* AudioLevelsView.swift in Sources */,
 				CA0ADFF226E244A50024E890 /* NeonStyleModifier.swift in Sources */,
+				CA6D6BDF26EB8FAD005B620B /* ImageExtension.swift in Sources */,
 				CA3E87ED26A99CEC002AEAF2 /* RecordView.swift in Sources */,
 				CA6D6BD026E8E565005B620B /* RecordProgressView.swift in Sources */,
 				CA3E882326A9AACC002AEAF2 /* RecorderManager.swift in Sources */,

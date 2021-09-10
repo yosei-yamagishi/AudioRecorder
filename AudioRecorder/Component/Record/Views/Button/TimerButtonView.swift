@@ -23,7 +23,7 @@ struct TimerButtonView: View {
                 Circle()
                     .stroke(component.buttonColor, lineWidth: 2)
                     .frame(width: 40, height: 40, alignment: .center)
-                Image(systemName: "timer")
+                Image.system(name: .timer)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()

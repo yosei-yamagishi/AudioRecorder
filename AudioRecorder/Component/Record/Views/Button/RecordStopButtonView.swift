@@ -22,7 +22,7 @@ struct RecordStopButtonView: View {
                 Circle()
                     .stroke(component.buttonColor, lineWidth: 2)
                     .frame(width: 40, height: 40, alignment: .center)
-                Image(systemName: "stop.fill")
+                Image.system(name: .stopFill)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
