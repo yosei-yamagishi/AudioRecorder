@@ -24,6 +24,13 @@
 		CA3E882626A9B380002AEAF2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3E882526A9B380002AEAF2 /* PlayerManager.swift */; };
 		CA55AD4126D3DAA80000BF40 /* RecordStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55AD4026D3DAA80000BF40 /* RecordStatus.swift */; };
 		CA55AD4326D3DB070000BF40 /* TextAnimationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55AD4226D3DB070000BF40 /* TextAnimationInfo.swift */; };
+		CA6D6BD026E8E565005B620B /* RecordProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BCF26E8E565005B620B /* RecordProgressView.swift */; };
+		CA6D6BD326EA3A05005B620B /* TimerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BD226EA3A05005B620B /* TimerButtonView.swift */; };
+		CA6D6BD526EA3A25005B620B /* RecordPauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BD426EA3A25005B620B /* RecordPauseButtonView.swift */; };
+		CA6D6BD726EA3A41005B620B /* RecordButtomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BD626EA3A41005B620B /* RecordButtomView.swift */; };
+		CA6D6BD926EA3A65005B620B /* RecordStopButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */; };
+		CA6D6BDB26EA3A8A005B620B /* PlaybackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */; };
+		CA6D6BDD26EA3D7F005B620B /* RecordOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */; };
 		CA8E4B9926B9127E00C8ADC5 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9826B9127E00C8ADC5 /* RecordViewModel.swift */; };
 		CA8E4B9C26BA187F00C8ADC5 /* RecordControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9B26BA187F00C8ADC5 /* RecordControlView.swift */; };
 		CA8E4B9E26BA18DA00C8ADC5 /* RecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4B9D26BA18DA00C8ADC5 /* RecordTimeView.swift */; };
@@ -74,6 +81,13 @@
 		CA3E882526A9B380002AEAF2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		CA55AD4026D3DAA80000BF40 /* RecordStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatus.swift; sourceTree = "<group>"; };
 		CA55AD4226D3DB070000BF40 /* TextAnimationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAnimationInfo.swift; sourceTree = "<group>"; };
+		CA6D6BCF26E8E565005B620B /* RecordProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProgressView.swift; sourceTree = "<group>"; };
+		CA6D6BD226EA3A05005B620B /* TimerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonView.swift; sourceTree = "<group>"; };
+		CA6D6BD426EA3A25005B620B /* RecordPauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPauseButtonView.swift; sourceTree = "<group>"; };
+		CA6D6BD626EA3A41005B620B /* RecordButtomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButtomView.swift; sourceTree = "<group>"; };
+		CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStopButtonView.swift; sourceTree = "<group>"; };
+		CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackButtonView.swift; sourceTree = "<group>"; };
+		CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOptionView.swift; sourceTree = "<group>"; };
 		CA8E4B9826B9127E00C8ADC5 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		CA8E4B9B26BA187F00C8ADC5 /* RecordControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordControlView.swift; sourceTree = "<group>"; };
 		CA8E4B9D26BA18DA00C8ADC5 /* RecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimeView.swift; sourceTree = "<group>"; };
@@ -204,6 +218,18 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		CA6D6BD126EA3169005B620B /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				CA6D6BD226EA3A05005B620B /* TimerButtonView.swift */,
+				CA6D6BD426EA3A25005B620B /* RecordPauseButtonView.swift */,
+				CA6D6BD626EA3A41005B620B /* RecordButtomView.swift */,
+				CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */,
+				CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		CA8E4B9726B9126E00C8ADC5 /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,11 +243,14 @@
 		CA8E4B9A26BA185100C8ADC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA6D6BD126EA3169005B620B /* Button */,
 				CA8E4B9B26BA187F00C8ADC5 /* RecordControlView.swift */,
 				CA8E4B9D26BA18DA00C8ADC5 /* RecordTimeView.swift */,
 				CA8E4BA526BAC68D00C8ADC5 /* AudioLevelBarView.swift */,
 				CA8E4BA726BAC83B00C8ADC5 /* AudioLevelsView.swift */,
 				CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */,
+				CA6D6BCF26E8E565005B620B /* RecordProgressView.swift */,
+				CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,13 +426,19 @@
 				CA8E4BA826BAC83B00C8ADC5 /* AudioLevelsView.swift in Sources */,
 				CA0ADFF226E244A50024E890 /* NeonStyleModifier.swift in Sources */,
 				CA3E87ED26A99CEC002AEAF2 /* RecordView.swift in Sources */,
+				CA6D6BD026E8E565005B620B /* RecordProgressView.swift in Sources */,
 				CA3E882326A9AACC002AEAF2 /* RecorderManager.swift in Sources */,
 				CA8E4B9C26BA187F00C8ADC5 /* RecordControlView.swift in Sources */,
+				CA6D6BDB26EA3A8A005B620B /* PlaybackButtonView.swift in Sources */,
 				CA3E881E26A9AA53002AEAF2 /* RecorderFileHandler.swift in Sources */,
+				CA6D6BDD26EA3D7F005B620B /* RecordOptionView.swift in Sources */,
 				CAC310FC26D1CD32006B784F /* RecordStatusTitleView.swift in Sources */,
 				CA8E4B9926B9127E00C8ADC5 /* RecordViewModel.swift in Sources */,
+				CA6D6BD926EA3A65005B620B /* RecordStopButtonView.swift in Sources */,
+				CA6D6BD326EA3A05005B620B /* TimerButtonView.swift in Sources */,
 				CA3E881F26A9AA53002AEAF2 /* AudioEditorHandler.swift in Sources */,
 				CA3E881C26A9AA53002AEAF2 /* RecorderSessionHandler.swift in Sources */,
+				CA6D6BD526EA3A25005B620B /* RecordPauseButtonView.swift in Sources */,
 				CA55AD4126D3DAA80000BF40 /* RecordStatus.swift in Sources */,
 				CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */,
 				CA3E882626A9B380002AEAF2 /* PlayerManager.swift in Sources */,
@@ -412,6 +447,7 @@
 				CA3E87EB26A99CEC002AEAF2 /* AudioRecorderApp.swift in Sources */,
 				CA3E882026A9AA53002AEAF2 /* RecorderHandler.swift in Sources */,
 				CA3E881D26A9AA53002AEAF2 /* AudioPlayerHandler.swift in Sources */,
+				CA6D6BD726EA3A41005B620B /* RecordButtomView.swift in Sources */,
 				CA55AD4326D3DB070000BF40 /* TextAnimationInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,12 +16,14 @@ struct RecordView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                VStack(spacing: 0) {
-                    RecordStatusTitleView(viewModel: viewModel)
-                    Spacer()
-                        .frame(height: 20)
-                    RecordTimeView(viewModel: viewModel)
-                    AudioLevelsView(viewModel: viewModel)
+                    .frame(height: 60)
+                RecordOptionView(viewModel: viewModel)
+                RecordProgressView(viewModel: viewModel) {
+                    VStack(spacing: 12) {
+                        RecordStatusTitleView(viewModel: viewModel)
+                        RecordTimeView(viewModel: viewModel)
+                        AudioLevelsView(viewModel: viewModel)
+                    }
                 }
                 Spacer()
                 RecordControlView(viewModel: viewModel)
@@ -38,6 +40,12 @@ struct RecordView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordView()
+        Group {
+            RecordView()
+            RecordView()
+                .previewDevice("iPhone 12 mini")
+            RecordView()
+                .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+        }
     }
 }

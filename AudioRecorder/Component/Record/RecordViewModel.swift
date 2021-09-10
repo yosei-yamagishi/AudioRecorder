@@ -8,13 +8,14 @@
 import SwiftUI
 import Combine
 
-class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsViewProtocol, RecordStatusTitleViewProtocol {
+class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsViewProtocol, RecordStatusTitleViewProtocol, RecordProgressViewProtocol {
     let recorderManager = RecorderManager()
     let playerManager = PlayerManager()
     
     @Published var currentTimeString: (minute: String, second: String, millisecond: String) = ("00", "00", "00")
-    @Published var isEnablePlay: Bool = false
     @Published var recordStatus: RecordStatus = .ready
+    @Published var progress: CGFloat = 0
+    @Published var isOnTimer: Bool = false
     
     // 表示する音量の数
     static let amplitudeDisplayCount: Int = 10
@@ -28,7 +29,7 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
     }
     
     func setup() {
-        recorderManager.setup()
+        recorderManager.setup(delegate: self)
     }
     
     private func updateAmpliude() {
@@ -43,6 +44,12 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
     }
 }
 
+extension RecordViewModel: RecorderManagerDelegate {
+    func didFinishRecording() {
+        recordStatus = .stop
+    }
+}
+
 // MARK: Timer
 
 extension RecordViewModel {
@@ -52,7 +59,10 @@ extension RecordViewModel {
             .sink { [weak self] timer in
                 guard let self = self else { return }
                 self.updateAmpliude()
-                self.currentTimeString = self.recorderManager.currentTime
+                if let progress = self.recorderManager.recordProgress {
+                    self.progress = progress
+                }
+                self.currentTimeString = self.recorderManager.currentDisplayTime
             }
     }
     
@@ -61,18 +71,32 @@ extension RecordViewModel {
     }
 }
 
-extension RecordViewModel: RecordControlViewProtocol {
-    func recordAndPause() {
+extension RecordViewModel: RecordOptionViewProtocol {
+    func setupTimer() {
+        isOnTimer.toggle()
+        recorderManager.setupTimer(isOn: isOnTimer)
+    }
+}
+
+extension RecordViewModel: RecordControlViewProtocol {    
+    func record() {
+        switch recordStatus {
+        case .pause, .ready:
+            recordStatus = .recording
+            recorderManager.record()
+            startTimer()
+        case .stop, .recording:
+            return
+        }
+    }
+    
+    func pause() {
         switch recordStatus {
         case .recording:
             recordStatus = .pause
             recorderManager.pause()
             stopTimer()
-        case .pause, .ready:
-            recordStatus = .recording
-            recorderManager.record()
-            startTimer()
-        case .stop:
+        case .stop, .pause, .ready:
             return
         }
     }
@@ -81,7 +105,6 @@ extension RecordViewModel: RecordControlViewProtocol {
         switch recordStatus {
         case .recording, .pause:
             recordStatus = .stop
-            isEnablePlay = true
             stopTimer()
             recorderManager.stop()
             initAmplitudeLevels()
