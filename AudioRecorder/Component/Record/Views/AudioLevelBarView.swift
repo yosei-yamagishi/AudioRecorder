@@ -19,7 +19,7 @@ struct AudioLevelBarView: View {
     }
     
     static let miniHeight: CGFloat = 10
-    static let maxHeight: CGFloat = 44
+    static let maxHeight: CGFloat = 20
     let gradationColors: [Color] = [Color.Theme.yellow, Color.Theme.pink]
     let silenceGradationColors: [Color] = [Color.Theme.disable]
     
