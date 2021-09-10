@@ -18,12 +18,12 @@ struct RecordTimeView<ViewModel: RecordTimeViewProtocol>: View {
         HStack(alignment: .bottom, spacing: 0) {
             Group {
                 Text(viewModel.currentTimeString.minute)
-                    .frame(width: 66, alignment: .center)
+                    .frame(width: 70, alignment: .center)
                 Text(":")
                 Text(viewModel.currentTimeString.second)
-                    .frame(width: 66, alignment: .center)
+                    .frame(width: 70, alignment: .center)
             }
-            .font(.custom(Font.CustomName.helveticaNeueUltraLight, size: 42))
+            .font(.custom(Font.CustomName.helveticaNeueUltraLight, size: 60))
             .foregroundColor(Color.Theme.textColor)
         }
     }
