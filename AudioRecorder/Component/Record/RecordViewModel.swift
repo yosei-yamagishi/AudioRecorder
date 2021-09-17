@@ -9,31 +9,41 @@ import SwiftUI
 import Combine
 
 class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsViewProtocol, RecordStatusTitleViewProtocol, RecordProgressViewProtocol {
-    let recorderManager = RecorderManager()
-    let playerManager = PlayerManager()
+    
+    struct Dependency {
+        let recorder: RecorderManager
+        let player: PlayerManager
+        
+        static var `default` = Dependency(
+            recorder: RecorderManager(),
+            player: PlayerManager()
+        )
+    }
+    
+    // 表示する音量の数
+    static let amplitudeDisplayCount: Int = 10
+    
+    private let dependency: Dependency
+    private var amplitudeCount: Int = 0
+    private var timerCancellable: AnyCancellable?
     
     @Published var currentTimeString: (minute: String, second: String, millisecond: String) = ("00", "00", "00")
     @Published var recordStatus: RecordStatus = .ready
     @Published var progress: CGFloat = 0
     @Published var isOnTimer: Bool = false
-    
-    // 表示する音量の数
-    static let amplitudeDisplayCount: Int = 10
-    // 表示に使用する音量
     @Published var amplitudeLevels: [Float]
-    private var amplitudeCount: Int = 0
-    private var timerCancellable: AnyCancellable?
     
-    init() {
+    init(dependency: Dependency = .default) {
+        self.dependency = dependency
         amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
     }
     
     func setup() {
-        recorderManager.setup(delegate: self)
+        dependency.recorder.setup(delegate: self)
     }
     
     private func updateAmpliude() {
-        let amplitude = self.recorderManager.updateAmpliude()
+        let amplitude = self.dependency.recorder.updateAmpliude()
         self.amplitudeCount += 1
         let index = self.amplitudeCount % Self.amplitudeDisplayCount
         self.amplitudeLevels[index] = amplitude
@@ -59,10 +69,10 @@ extension RecordViewModel {
             .sink { [weak self] timer in
                 guard let self = self else { return }
                 self.updateAmpliude()
-                if let progress = self.recorderManager.recordProgress {
+                if let progress = self.dependency.recorder.recordProgress {
                     self.progress = progress
                 }
-                self.currentTimeString = self.recorderManager.currentDisplayTime
+                self.currentTimeString = self.dependency.recorder.currentDisplayTime
             }
     }
     
@@ -74,7 +84,7 @@ extension RecordViewModel {
 extension RecordViewModel: RecordOptionViewProtocol {
     func setupTimer() {
         isOnTimer.toggle()
-        recorderManager.setupTimer(isOn: isOnTimer)
+        dependency.recorder.setupTimer(isOn: isOnTimer)
     }
 }
 
@@ -83,7 +93,7 @@ extension RecordViewModel: RecordControlViewProtocol {
         switch recordStatus {
         case .pause, .ready:
             recordStatus = .recording
-            recorderManager.record()
+            dependency.recorder.record()
             startTimer()
         case .stop, .recording:
             return
@@ -94,7 +104,7 @@ extension RecordViewModel: RecordControlViewProtocol {
         switch recordStatus {
         case .recording:
             recordStatus = .pause
-            recorderManager.pause()
+            dependency.recorder.pause()
             stopTimer()
         case .stop, .pause, .ready:
             return
@@ -106,7 +116,7 @@ extension RecordViewModel: RecordControlViewProtocol {
         case .recording, .pause:
             recordStatus = .stop
             stopTimer()
-            recorderManager.stop()
+            dependency.recorder.stop()
             initAmplitudeLevels()
         default:
             break
@@ -116,10 +126,10 @@ extension RecordViewModel: RecordControlViewProtocol {
     func play() {
         switch recordStatus {
         case .stop:
-            if let originalUrl = recorderManager.originalFileUrl {
-                playerManager.setup(originalUrl: originalUrl)
+            if let originalUrl = dependency.recorder.originalFileUrl {
+                dependency.player.setup(originalUrl: originalUrl)
             }
-            playerManager.play(currentTime: 0)
+            dependency.player.play(currentTime: 0)
         default:
             break
         }

@@ -22,59 +22,81 @@ struct RecordControlView<ViewModel: RecordControlViewProtocol>: View  {
     
     var body: some View {
         HStack(alignment: .center, spacing: 36) {
-            PlaybackButtonView(component: playbackComponent()) {
-                viewModel.play()
-            }
-            switch viewModel.recordStatus {
-            case .recording:
-                RecordPauseButtonView {
-                    viewModel.pause()
-                }
-            default:
-                RecordButtomView {
-                    viewModel.record()
-                }
-            }
-            RecordStopButtonView(component: stopComponent()) {
-                viewModel.stop()
-            }
+            RecordPauseButtonView(component: pauseComponent())
+            RecordButtomView(component: recordComponent())
+            RecordStopButtonView(component: stopComponent())
         }
     }
     
-    private func playbackComponent() -> PlaybackButtonView.Component {
-        var component: PlaybackButtonView.Component
+    private func recordComponent() -> RecordButtomView.Component {
         switch viewModel.recordStatus {
-        case .recording, .ready, .pause:
-            component = PlaybackButtonView.Component(
-                buttonColor: Color.Theme.disable,
-                disable: false
+        case .recording:
+            return RecordButtomView.Component(
+                buttonColor: Color.Theme.yellow,
+                neonColor: Color.Theme.yellow,
+                disable: true,
+                action: {}
             )
         case .stop:
-            component = PlaybackButtonView.Component(
+            return RecordButtomView.Component(
+                buttonColor: Color.Theme.disable,
+                neonColor: .clear,
+                disable: true,
+                action: {}
+            )
+        case .ready, .pause:
+            return RecordButtomView.Component(
                 buttonColor: Color.Theme.white,
-                disable: true
+                neonColor: .clear,
+                disable: false,
+                action: { viewModel.record() }
             )
         }
-        return component
+    }
+    
+    private func pauseComponent() -> RecordPauseButtonView.Component {
+        switch viewModel.recordStatus {
+        case .ready, .stop:
+            return RecordPauseButtonView.Component(
+                buttonColor: Color.Theme.disable,
+                neonColor: .clear,
+                disable: false,
+                action: {}
+            )
+        case .recording:
+            return RecordPauseButtonView.Component(
+                buttonColor: Color.Theme.white,
+                neonColor: .clear,
+                disable: true,
+                action: { viewModel.pause() }
+            )
+        case .pause:
+            return RecordPauseButtonView.Component(
+                buttonColor: Color.Theme.pink,
+                neonColor: Color.Theme.pink,
+                disable: true,
+                action: {}
+            )
+        }
     }
     
     private func stopComponent() -> RecordStopButtonView.Component {
-        var component: RecordStopButtonView.Component
         switch self.viewModel.recordStatus {
         case .ready, .stop:
-            component = RecordStopButtonView.Component(
+            return RecordStopButtonView.Component(
                 buttonColor: Color.Theme.disable,
-                disable: true
+                neonColor: .clear,
+                disable: true,
+                action: {}
             )
-            
-        default:
-            component = RecordStopButtonView.Component(
-                buttonColor: Color.Theme.pink,
-                disable: false
+        case .pause, .recording:
+            return RecordStopButtonView.Component(
+                buttonColor: Color.Theme.white,
+                neonColor: .clear,
+                disable: false,
+                action: { viewModel.stop() }
             )
-            
         }
-        return component
     }
 }
 

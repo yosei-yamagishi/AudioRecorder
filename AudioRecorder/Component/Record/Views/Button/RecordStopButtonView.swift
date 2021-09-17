@@ -10,14 +10,15 @@ import SwiftUI
 struct RecordStopButtonView: View {
     struct Component {
         var buttonColor: Color
+        var neonColor: Color
         var disable: Bool
+        let action: () -> Void
     }
     
     let component: Component
-    let action: () -> Void
     
     var body: some View {
-        Button(action: action) {
+        Button(action: component.action) {
             ZStack {
                 Circle()
                     .stroke(component.buttonColor, lineWidth: 2)
@@ -31,6 +32,7 @@ struct RecordStopButtonView: View {
             }
         }
         .disabled(component.disable)
+        .neonStyle(neonColor: component.neonColor)
     }
 }
 
