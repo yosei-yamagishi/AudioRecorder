@@ -1,6 +1,12 @@
-# AudioRecorder
-Intoroduce how to record audio using AVAudioRecorder  
+# Intoroduce
+Intoroduce how to record audio using AVAudioRecorder in SwiftUI
 AVAudioRecorderを使用してオーディオを録音する方法を紹介します
+
+## UI
+<img src="https://user-images.githubusercontent.com/22518469/133787178-752ad450-9d02-4e16-8cc7-d2d37db10b01.gif" width="320">
+
+## Recorder
+using AVAudioRecorder
 
 ## What can AVAudioRecorder do? (AVAudioRecorderができること)
 - Record audio from the system’s active input device  
@@ -17,4 +23,3 @@ AVAudioRecorderを使用してオーディオを録音する方法を紹介し�
 
 ※document  
 https://developer.apple.com/documentation/avfaudio/avaudiorecorder
-
