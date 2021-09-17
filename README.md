@@ -1,5 +1,5 @@
 # Intoroduce
-Intoroduce how to record audio using AVAudioRecorder in SwiftUI
+Intoroduce how to record audio using AVAudioRecorder in SwiftUI  
 AVAudioRecorderを使用してオーディオを録音する方法を紹介します
 
 ## UI
