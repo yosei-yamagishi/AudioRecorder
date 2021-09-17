@@ -20,7 +20,8 @@ struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
     var statusNeonColor: Color {
         switch viewModel.recordStatus {
         case .pause: return Color.Theme.pink
-        case .ready, .stop: return Color.Theme.white
+        case .ready: return Color.Theme.white
+        case .stop: return Color.Theme.disable
         case .recording: return Color.Theme.yellow
         }
     }

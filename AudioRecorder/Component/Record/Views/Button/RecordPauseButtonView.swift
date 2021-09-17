@@ -9,21 +9,27 @@ import SwiftUI
 
 // 一時停止ボタン
 struct RecordPauseButtonView: View {
-    let action: () -> Void
+    struct Component {
+        var buttonColor: Color
+        var neonColor: Color
+        var disable: Bool
+        let action: () -> Void
+    }
+    
+    let component: Component
     
     var body: some View {
-        Button(action: action) {
-            
+        Button(action: component.action) {
             ZStack {
                 Circle()
-                    .stroke(Color.Theme.pink, lineWidth: 2)
-                    .frame(width: 60, height: 60, alignment: .center)
+                    .stroke(component.buttonColor, lineWidth: 2)
+                    .frame(width: 40, height: 40, alignment: .center)
                 Image.system(name: .pause)
                     .renderingMode(.template)
-                    .foregroundColor(Color.Theme.pink)
-                    .font(.system(size: 24.0, weight: .bold, design: .default))
+                    .foregroundColor(component.buttonColor)
+                    .font(.system(size: 18.0, weight: .bold, design: .default))
             }
-            .frame(width: 60, height: 60)
+            .neonStyle(neonColor: component.neonColor)
         }
     }
 }

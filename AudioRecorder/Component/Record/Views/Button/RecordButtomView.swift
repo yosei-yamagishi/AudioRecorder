@@ -8,20 +8,29 @@
 import SwiftUI
 
 struct RecordButtomView: View {
-    let action: () -> Void
+    struct Component {
+        var buttonColor: Color
+        var neonColor: Color
+        var disable: Bool
+        let action: () -> Void
+    }
+    
+    let component: Component
     
     var body: some View {
-        Button(action: action){
+        Button(action: component.action){
             ZStack {
                 Circle()
-                    .stroke(Color.Theme.yellow, lineWidth: 2)
+                    .stroke(component.buttonColor, lineWidth: 2)
                     .frame(width: 60, height: 60, alignment: .center)
                 Image.system(name: .mic)
                     .renderingMode(.template)
-                    .foregroundColor(Color.Theme.yellow)
+                    .foregroundColor(component.buttonColor)
                     .font(.system(size: 24.0, weight: .bold, design: .default))
             }
             .frame(width: 60, height: 60)
         }
+        .disabled(component.disable)
+        .neonStyle(neonColor: component.neonColor)
     }
 }
