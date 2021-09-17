@@ -3,7 +3,7 @@ Intoroduce how to record audio using AVAudioRecorder in SwiftUI
 AVAudioRecorderを使用してオーディオを録音する方法を紹介します
 
 ## UI
-<img src="https://user-images.githubusercontent.com/22518469/133787178-752ad450-9d02-4e16-8cc7-d2d37db10b01.gif" width="320">
+https://user-images.githubusercontent.com/22518469/133788546-d23b7a94-2e59-4f43-ad4a-4b3ab9b6788c.mp4
 
 ## Recorder
 using AVAudioRecorder
