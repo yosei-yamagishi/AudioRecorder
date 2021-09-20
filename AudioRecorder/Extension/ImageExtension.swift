@@ -14,6 +14,7 @@ extension Image {
         case mic
         case stopFill = "stop.fill"
         case playFill = "play.fill"
+        case deskclock = "deskclock"
     }
     
     static func system(name: SFSymbolName) -> Image {

@@ -13,10 +13,12 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
     struct Dependency {
         let recorder: RecorderManager
         let player: PlayerManager
+        let countDownAdapter: CountDownAdapter
         
         static var `default` = Dependency(
             recorder: RecorderManager(),
-            player: PlayerManager()
+            player: PlayerManager(),
+            countDownAdapter: CountDownAdapter()
         )
     }
     
@@ -26,20 +28,32 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
     private let dependency: Dependency
     private var amplitudeCount: Int = 0
     private var timerCancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
     
     @Published var currentTimeString: (minute: String, second: String, millisecond: String) = ("00", "00", "00")
     @Published var recordStatus: RecordStatus = .ready
     @Published var progress: CGFloat = 0
     @Published var isOnTimer: Bool = false
+    @Published var isOnCountDown: Bool = false
     @Published var amplitudeLevels: [Float]
+    @Published var countDownType: CountDownType = .three
     
     init(dependency: Dependency = .default) {
         self.dependency = dependency
         amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
+        
     }
     
     func setup() {
         dependency.recorder.setup(delegate: self)
+        
+        dependency.countDownAdapter.countDownTypePublisher().sink { [weak self] countDownType in
+            self?.countDownType = countDownType
+        }.store(in: &cancellables)
+        
+        dependency.countDownAdapter.finishCountDownPublisher().sink { [weak self]  in
+            self?._record()
+        }.store(in: &cancellables)
     }
     
     private func updateAmpliude() {
@@ -51,6 +65,12 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
 
     private func initAmplitudeLevels() {
         amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
+    }
+    
+    private func _record() {
+        recordStatus = .recording
+        dependency.recorder.record()
+        startTimer()
     }
 }
 
@@ -86,16 +106,25 @@ extension RecordViewModel: RecordOptionViewProtocol {
         isOnTimer.toggle()
         dependency.recorder.setupTimer(isOn: isOnTimer)
     }
+    
+    func setupCountDown() {
+        isOnCountDown.toggle()
+    }
 }
 
 extension RecordViewModel: RecordControlViewProtocol {    
     func record() {
         switch recordStatus {
-        case .pause, .ready:
-            recordStatus = .recording
-            dependency.recorder.record()
-            startTimer()
-        case .stop, .recording:
+        case .ready:
+            if isOnCountDown {
+                recordStatus = .countdown
+                dependency.countDownAdapter.startCountDown()
+            } else {
+                _record()
+            }
+        case .pause:
+            _record()
+        default:
             return
         }
     }
@@ -106,7 +135,7 @@ extension RecordViewModel: RecordControlViewProtocol {
             recordStatus = .pause
             dependency.recorder.pause()
             stopTimer()
-        case .stop, .pause, .ready:
+        default:
             return
         }
     }

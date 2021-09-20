@@ -10,6 +10,7 @@ import Combine
 
 protocol RecordStatusTitleViewProtocol: ObservableObject {
     var recordStatus: RecordStatus { get }
+    var countDownType: CountDownType { get }
 }
 struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
     @ObservedObject var viewModel: ViewModel
@@ -23,6 +24,7 @@ struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
         case .ready: return Color.Theme.white
         case .stop: return Color.Theme.disable
         case .recording: return Color.Theme.yellow
+        case .countdown: return Color.Theme.white
         }
     }
     
@@ -31,6 +33,8 @@ struct RecordStatusTitleView<ViewModel: RecordStatusTitleViewProtocol>: View {
             switch viewModel.recordStatus {
             case .stop, .pause, .ready:
                 Text(viewModel.recordStatus.title)
+            case .countdown:
+                CountDownView(countDownType: viewModel.countDownType)
             case .recording:
                 HStack(spacing: 0) {
                     ForEach(titleTextAnimations) { text in

@@ -7,6 +7,7 @@
 
 enum RecordStatus {
     case ready
+    case countdown
     case recording
     case pause
     case stop
@@ -17,6 +18,7 @@ enum RecordStatus {
         case .recording: return "Recording"
         case .pause: return "Pause"
         case .stop: return "Stop"
+        case .countdown: return ""
         }
     }
 }

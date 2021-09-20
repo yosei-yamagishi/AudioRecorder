@@ -30,7 +30,7 @@ struct RecordControlView<ViewModel: RecordControlViewProtocol>: View  {
     
     private func recordComponent() -> RecordButtomView.Component {
         switch viewModel.recordStatus {
-        case .recording:
+        case .recording, .countdown:
             return RecordButtomView.Component(
                 buttonColor: Color.Theme.yellow,
                 neonColor: Color.Theme.yellow,
@@ -56,18 +56,18 @@ struct RecordControlView<ViewModel: RecordControlViewProtocol>: View  {
     
     private func pauseComponent() -> RecordPauseButtonView.Component {
         switch viewModel.recordStatus {
-        case .ready, .stop:
+        case .ready, .stop, .countdown:
             return RecordPauseButtonView.Component(
                 buttonColor: Color.Theme.disable,
                 neonColor: .clear,
-                disable: false,
+                disable: true,
                 action: {}
             )
         case .recording:
             return RecordPauseButtonView.Component(
                 buttonColor: Color.Theme.white,
                 neonColor: .clear,
-                disable: true,
+                disable: false,
                 action: { viewModel.pause() }
             )
         case .pause:
@@ -82,7 +82,7 @@ struct RecordControlView<ViewModel: RecordControlViewProtocol>: View  {
     
     private func stopComponent() -> RecordStopButtonView.Component {
         switch self.viewModel.recordStatus {
-        case .ready, .stop:
+        case .ready, .countdown, .stop:
             return RecordStopButtonView.Component(
                 buttonColor: Color.Theme.disable,
                 neonColor: .clear,

@@ -1,33 +1,34 @@
 //
-//  RecordPauseButtonView.swift
+//  CountDownButtonView.swift
 //  AudioRecorder
 //
-//  Created by Yosei Yamagishi on 2021/09/09.
+//  Created by Yosei Yamagishi on 2021/09/20.
 //
 
 import SwiftUI
 
-// 一時停止ボタン
-struct RecordPauseButtonView: View {
+struct CountDownButtonView: View {
     struct Component {
         var buttonColor: Color
         var neonColor: Color
         var disable: Bool
-        let action: () -> Void
     }
     
     let component: Component
+    let action: () -> Void
     
     var body: some View {
-        Button(action: component.action) {
+        Button(action: action) {
             ZStack {
                 Circle()
                     .stroke(component.buttonColor, lineWidth: 2)
                     .frame(width: 40, height: 40, alignment: .center)
-                Image.system(name: .pause)
+                Image.system(name: .deskclock)
                     .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 18, height: 18)
                     .foregroundColor(component.buttonColor)
-                    .font(.system(size: 18.0, weight: .bold, design: .default))
             }
         }
         .disabled(component.disable)
