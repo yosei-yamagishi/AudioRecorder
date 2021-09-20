@@ -38,7 +38,11 @@
 		CA8E4BA126BA1C2800C8ADC5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */; };
 		CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA526BAC68D00C8ADC5 /* AudioLevelBarView.swift */; };
 		CA8E4BA826BAC83B00C8ADC5 /* AudioLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA726BAC83B00C8ADC5 /* AudioLevelsView.swift */; };
+		CAB5E67126F5AAD4007BDD1D /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5E67026F5AAD4007BDD1D /* CountDownView.swift */; };
+		CAB5E67426F602F1007BDD1D /* CountDownAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */; };
 		CAC310FC26D1CD32006B784F /* RecordStatusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */; };
+		CAF2889926F8C40E006AC146 /* CountDownButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2889826F8C40E006AC146 /* CountDownButtonView.swift */; };
+		CAF2889B26F8CEC9006AC146 /* CountDownType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2889A26F8CEC9006AC146 /* CountDownType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +100,11 @@
 		CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CA8E4BA526BAC68D00C8ADC5 /* AudioLevelBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevelBarView.swift; sourceTree = "<group>"; };
 		CA8E4BA726BAC83B00C8ADC5 /* AudioLevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevelsView.swift; sourceTree = "<group>"; };
+		CAB5E67026F5AAD4007BDD1D /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
+		CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownAdapter.swift; sourceTree = "<group>"; };
 		CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatusTitleView.swift; sourceTree = "<group>"; };
+		CAF2889826F8C40E006AC146 /* CountDownButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownButtonView.swift; sourceTree = "<group>"; };
+		CAF2889A26F8CEC9006AC146 /* CountDownType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +171,7 @@
 		CA3E87E926A99CEC002AEAF2 /* AudioRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				CAB5E67226F602D6007BDD1D /* Adapter */,
 				CA8E4BA326BA1D3A00C8ADC5 /* Component */,
 				CA8E4BA226BA1D0800C8ADC5 /* Extension */,
 				CA8E4B9F26BA1C1300C8ADC5 /* Foundation */,
@@ -228,6 +237,7 @@
 				CA6D6BD626EA3A41005B620B /* RecordButtomView.swift */,
 				CA6D6BD826EA3A65005B620B /* RecordStopButtonView.swift */,
 				CA6D6BDA26EA3A8A005B620B /* PlaybackButtonView.swift */,
+				CAF2889826F8C40E006AC146 /* CountDownButtonView.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -253,6 +263,7 @@
 				CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */,
 				CA6D6BCF26E8E565005B620B /* RecordProgressView.swift */,
 				CA6D6BDC26EA3D7F005B620B /* RecordOptionView.swift */,
+				CAB5E67026F5AAD4007BDD1D /* CountDownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 				CA3E882126A9AA5C002AEAF2 /* Handler */,
 				CA55AD4026D3DAA80000BF40 /* RecordStatus.swift */,
 				CA55AD4226D3DB070000BF40 /* TextAnimationInfo.swift */,
+				CAF2889A26F8CEC9006AC146 /* CountDownType.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -294,6 +306,14 @@
 				CA3E87EA26A99CEC002AEAF2 /* AudioRecorderApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		CAB5E67226F602D6007BDD1D /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,18 +456,22 @@
 				CA6D6BDB26EA3A8A005B620B /* PlaybackButtonView.swift in Sources */,
 				CA3E881E26A9AA53002AEAF2 /* RecorderFileHandler.swift in Sources */,
 				CA6D6BDD26EA3D7F005B620B /* RecordOptionView.swift in Sources */,
+				CAF2889926F8C40E006AC146 /* CountDownButtonView.swift in Sources */,
 				CAC310FC26D1CD32006B784F /* RecordStatusTitleView.swift in Sources */,
 				CA8E4B9926B9127E00C8ADC5 /* RecordViewModel.swift in Sources */,
 				CA6D6BD926EA3A65005B620B /* RecordStopButtonView.swift in Sources */,
 				CA6D6BD326EA3A05005B620B /* TimerButtonView.swift in Sources */,
 				CA3E881F26A9AA53002AEAF2 /* AudioEditorHandler.swift in Sources */,
+				CAF2889B26F8CEC9006AC146 /* CountDownType.swift in Sources */,
 				CA3E881C26A9AA53002AEAF2 /* RecorderSessionHandler.swift in Sources */,
+				CAB5E67426F602F1007BDD1D /* CountDownAdapter.swift in Sources */,
 				CA6D6BD526EA3A25005B620B /* RecordPauseButtonView.swift in Sources */,
 				CA55AD4126D3DAA80000BF40 /* RecordStatus.swift in Sources */,
 				CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */,
 				CA3E882626A9B380002AEAF2 /* PlayerManager.swift in Sources */,
 				CA0ADFF426E244E30024E890 /* ViewExtension.swift in Sources */,
 				CA8E4BA126BA1C2800C8ADC5 /* ColorExtension.swift in Sources */,
+				CAB5E67126F5AAD4007BDD1D /* CountDownView.swift in Sources */,
 				CA3E87EB26A99CEC002AEAF2 /* AudioRecorderApp.swift in Sources */,
 				CA3E882026A9AA53002AEAF2 /* RecorderHandler.swift in Sources */,
 				CA3E881D26A9AA53002AEAF2 /* AudioPlayerHandler.swift in Sources */,

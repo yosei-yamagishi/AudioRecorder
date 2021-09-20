@@ -19,7 +19,7 @@ struct RecordProgressView<Content: View, ViewModel: RecordProgressViewProtocol>:
     var progressColor: Color {
         switch viewModel.recordStatus {
         case .pause: return Color.Theme.pink
-        case .ready, .stop: return Color.Theme.white
+        case .ready, .stop, .countdown: return Color.Theme.white
         case .recording: return Color.Theme.yellow
         }
     }

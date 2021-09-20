@@ -17,7 +17,7 @@ struct AudioLevelsView<ViewModel: AudioLevelsViewProtocol>: View {
     
     var neonColor: Color {
         switch viewModel.recordStatus {
-        case .ready, .stop: return Color.Theme.disable
+        case .ready, .stop, .countdown: return Color.Theme.disable
         case .pause: return Color.Theme.pink
         case .recording: return Color.Theme.yellow
         }
