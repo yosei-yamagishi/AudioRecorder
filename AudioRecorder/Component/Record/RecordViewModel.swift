@@ -41,7 +41,6 @@ class RecordViewModel: ObservableObject, RecordTimeViewProtocol, AudioLevelsView
     init(dependency: Dependency = .default) {
         self.dependency = dependency
         amplitudeLevels = [Float](repeating: .zero, count: Self.amplitudeDisplayCount)
-        
     }
     
     func setup() {

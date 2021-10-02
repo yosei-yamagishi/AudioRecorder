@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct RecordView: View {
-    @StateObject private var viewModel = RecordViewModel()
+    @StateObject var viewModel: RecordViewModel
     
     var body: some View {
         ZStack {
             Color.Theme.black
                 .ignoresSafeArea()
             VStack {
-                Spacer()
-                    .frame(height: 60)
                 RecordOptionView(viewModel: viewModel)
                 RecordProgressView(viewModel: viewModel) {
                     VStack(spacing: 12) {
@@ -41,10 +39,10 @@ struct RecordView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecordView()
-            RecordView()
+            RecordView(viewModel: RecordViewModel())
+            RecordView(viewModel: RecordViewModel())
                 .previewDevice("iPhone 12 mini")
-            RecordView()
+            RecordView(viewModel: RecordViewModel())
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
         }
     }

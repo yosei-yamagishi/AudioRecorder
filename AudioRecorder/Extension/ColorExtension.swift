@@ -22,5 +22,7 @@ extension Color {
 extension Font {
     enum CustomName {
         static let helveticaNeueUltraLight = "HelveticaNeue-UltraLight"
+        static let helveticaNeueUltraLightItalic = "HelveticaNeue-UltraLightItalic"
+        static let helveticaNeueThin = "HelveticaNeue-Thin"
     }
 }

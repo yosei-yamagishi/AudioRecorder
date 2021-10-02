@@ -38,9 +38,15 @@
 		CA8E4BA126BA1C2800C8ADC5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */; };
 		CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA526BAC68D00C8ADC5 /* AudioLevelBarView.swift */; };
 		CA8E4BA826BAC83B00C8ADC5 /* AudioLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E4BA726BAC83B00C8ADC5 /* AudioLevelsView.swift */; };
+		CA912F6526FFFED400AEB547 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA912F6426FFFED400AEB547 /* HomeViewModel.swift */; };
+		CA912F682700376500AEB547 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA912F672700376500AEB547 /* HomeRouter.swift */; };
+		CA98A62126FEB35800AD8699 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA98A62026FEB35800AD8699 /* HomeView.swift */; };
 		CAB5E67126F5AAD4007BDD1D /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5E67026F5AAD4007BDD1D /* CountDownView.swift */; };
 		CAB5E67426F602F1007BDD1D /* CountDownAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */; };
 		CAC310FC26D1CD32006B784F /* RecordStatusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */; };
+		CAD7085E27068C1D00429303 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7085D27068C1D00429303 /* NavigationBarExtension.swift */; };
+		CAD70863270694BE00429303 /* SignboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD70862270694BE00429303 /* SignboardView.swift */; };
+		CAD708672707EA3800429303 /* HomeNeonLightTimerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD708662707EA3800429303 /* HomeNeonLightTimerAdapter.swift */; };
 		CAF2889926F8C40E006AC146 /* CountDownButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2889826F8C40E006AC146 /* CountDownButtonView.swift */; };
 		CAF2889B26F8CEC9006AC146 /* CountDownType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2889A26F8CEC9006AC146 /* CountDownType.swift */; };
 /* End PBXBuildFile section */
@@ -100,9 +106,15 @@
 		CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CA8E4BA526BAC68D00C8ADC5 /* AudioLevelBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevelBarView.swift; sourceTree = "<group>"; };
 		CA8E4BA726BAC83B00C8ADC5 /* AudioLevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevelsView.swift; sourceTree = "<group>"; };
+		CA912F6426FFFED400AEB547 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CA912F672700376500AEB547 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		CA98A62026FEB35800AD8699 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CAB5E67026F5AAD4007BDD1D /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownAdapter.swift; sourceTree = "<group>"; };
 		CAC310FB26D1CD32006B784F /* RecordStatusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatusTitleView.swift; sourceTree = "<group>"; };
+		CAD7085D27068C1D00429303 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
+		CAD70862270694BE00429303 /* SignboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignboardView.swift; sourceTree = "<group>"; };
+		CAD708662707EA3800429303 /* HomeNeonLightTimerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNeonLightTimerAdapter.swift; sourceTree = "<group>"; };
 		CAF2889826F8C40E006AC146 /* CountDownButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownButtonView.swift; sourceTree = "<group>"; };
 		CAF2889A26F8CEC9006AC146 /* CountDownType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +183,7 @@
 		CA3E87E926A99CEC002AEAF2 /* AudioRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				CA912F662700375100AEB547 /* Router */,
 				CAB5E67226F602D6007BDD1D /* Adapter */,
 				CA8E4BA326BA1D3A00C8ADC5 /* Component */,
 				CA8E4BA226BA1D0800C8ADC5 /* Extension */,
@@ -287,6 +300,7 @@
 				CA8E4BA026BA1C2800C8ADC5 /* ColorExtension.swift */,
 				CA0ADFF326E244E30024E890 /* ViewExtension.swift */,
 				CA6D6BDE26EB8FAD005B620B /* ImageExtension.swift */,
+				CAD7085D27068C1D00429303 /* NavigationBarExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -294,6 +308,7 @@
 		CA8E4BA326BA1D3A00C8ADC5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CA98A61F26FEB32000AD8699 /* Home */,
 				CA8E4BA426BA1D4700C8ADC5 /* App */,
 				CA8E4B9726B9126E00C8ADC5 /* Record */,
 			);
@@ -308,12 +323,39 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		CA912F662700375100AEB547 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA912F672700376500AEB547 /* HomeRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CA98A61F26FEB32000AD8699 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7085F2706948B00429303 /* View */,
+				CA98A62026FEB35800AD8699 /* HomeView.swift */,
+				CA912F6426FFFED400AEB547 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		CAB5E67226F602D6007BDD1D /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
 				CAB5E67326F602F1007BDD1D /* CountDownAdapter.swift */,
+				CAD708662707EA3800429303 /* HomeNeonLightTimerAdapter.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CAD7085F2706948B00429303 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAD70862270694BE00429303 /* SignboardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +496,7 @@
 				CA3E882326A9AACC002AEAF2 /* RecorderManager.swift in Sources */,
 				CA8E4B9C26BA187F00C8ADC5 /* RecordControlView.swift in Sources */,
 				CA6D6BDB26EA3A8A005B620B /* PlaybackButtonView.swift in Sources */,
+				CA912F682700376500AEB547 /* HomeRouter.swift in Sources */,
 				CA3E881E26A9AA53002AEAF2 /* RecorderFileHandler.swift in Sources */,
 				CA6D6BDD26EA3D7F005B620B /* RecordOptionView.swift in Sources */,
 				CAF2889926F8C40E006AC146 /* CountDownButtonView.swift in Sources */,
@@ -462,21 +505,26 @@
 				CA6D6BD926EA3A65005B620B /* RecordStopButtonView.swift in Sources */,
 				CA6D6BD326EA3A05005B620B /* TimerButtonView.swift in Sources */,
 				CA3E881F26A9AA53002AEAF2 /* AudioEditorHandler.swift in Sources */,
+				CA912F6526FFFED400AEB547 /* HomeViewModel.swift in Sources */,
 				CAF2889B26F8CEC9006AC146 /* CountDownType.swift in Sources */,
 				CA3E881C26A9AA53002AEAF2 /* RecorderSessionHandler.swift in Sources */,
 				CAB5E67426F602F1007BDD1D /* CountDownAdapter.swift in Sources */,
 				CA6D6BD526EA3A25005B620B /* RecordPauseButtonView.swift in Sources */,
 				CA55AD4126D3DAA80000BF40 /* RecordStatus.swift in Sources */,
 				CA8E4BA626BAC68D00C8ADC5 /* AudioLevelBarView.swift in Sources */,
+				CAD7085E27068C1D00429303 /* NavigationBarExtension.swift in Sources */,
 				CA3E882626A9B380002AEAF2 /* PlayerManager.swift in Sources */,
 				CA0ADFF426E244E30024E890 /* ViewExtension.swift in Sources */,
 				CA8E4BA126BA1C2800C8ADC5 /* ColorExtension.swift in Sources */,
+				CAD708672707EA3800429303 /* HomeNeonLightTimerAdapter.swift in Sources */,
 				CAB5E67126F5AAD4007BDD1D /* CountDownView.swift in Sources */,
+				CA98A62126FEB35800AD8699 /* HomeView.swift in Sources */,
 				CA3E87EB26A99CEC002AEAF2 /* AudioRecorderApp.swift in Sources */,
 				CA3E882026A9AA53002AEAF2 /* RecorderHandler.swift in Sources */,
 				CA3E881D26A9AA53002AEAF2 /* AudioPlayerHandler.swift in Sources */,
 				CA6D6BD726EA3A41005B620B /* RecordButtomView.swift in Sources */,
 				CA55AD4326D3DB070000BF40 /* TextAnimationInfo.swift in Sources */,
+				CAD70863270694BE00429303 /* SignboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
