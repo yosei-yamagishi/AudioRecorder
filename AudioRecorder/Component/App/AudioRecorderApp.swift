@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct AudioRecorderApp: App {
+    
+    init() {
+        UINavigationBar.setupNavigationBarColor()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            RecordView()
+            HomeView(
+                viewModel: HomeViewModel(),
+                router: HomeRouter()
+            )
         }
     }
 }
